@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+
 
 const Movie = props => {
-  const [movie, setMovie] = useState(null);
-  const id = props.match.params.id;
+  const [movie, setMovie] = useState();
+  // const id = props.match.params.id;
+  const { id } = useParams();
+
   useEffect(() => {
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
@@ -22,8 +26,8 @@ const Movie = props => {
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
   //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+  //   addToSavedList(movie);
+  // };
 
   if (!movie) {
     return <div>Loading movie information...</div>;
@@ -34,7 +38,7 @@ const Movie = props => {
     <div className="save-wrapper">
       <div className="movie-card">
         <h2>{title}</h2>
-        <Link to="/movies/3">Next Movie</Link>
+        {/* <Link to="/movies/3">Next Movie</Link> */}
         <div className="movie-director">
           Director: <em>{director}</em>
         </div>
